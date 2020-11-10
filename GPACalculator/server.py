@@ -28,7 +28,7 @@ def calculate():
     sum = 0
     for i in range(len(mark)):
         sum = sum + mark[i] * weight[i]
-    return "The weighted grade is " + str(sum)
+    return render_template("calc.html", mark=mark, weight=weight, val=sum)
 
 
 @app.errorhandler(404)
