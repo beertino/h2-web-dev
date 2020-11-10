@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}?{{t}}">
+    <title>Document</title>
+</head>
+<body>
+    <form action='/calculate' method='GET'>
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+    
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+    
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+    
+        .tg .tg-0pky {
+            border-color: inherit;
+            text-align: left;
+            vertical-align: top
+        }
+    
+        .tg .tg-0lax {
+            text-align: left;
+            vertical-align: top
+        }
+    </style>
+    <table class="tg">
+        <thead>
+            <tr>
+                <th class="tg-0pky">Index</th>
+                <th class="tg-0pky">Mark</th>
+                <th class="tg-0lax">Weightage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tg-0pky">1</td>
+                <td class="tg-0pky"><div>
+                <label for='mark'></label>
+                <input type='text' id='mark1' name='mark1'>
+                </div></td>
+                <td class="tg-0lax"><div>
+                    <label for='mark'></label>
+                    <input type='text' id='weightage1' name='weightage1'>
+                </div></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">2</td>
+                <td class="tg-0pky">
+                    <div>
+                        <label for='mark'></label>
+                        <input type='text' id='mark2' name='mark2'>
+                    </div>
+                </td>
+                <td class="tg-0lax">
+                    <div>
+                        <label for='mark'></label>
+                        <input type='text' id='weightage2' name='weightage2'>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">3</td>
+                <td class="tg-0pky">
+                    <div>
+                        <label for='mark'></label>
+                        <input type='text' id='mark3' name='mark3'>
+                    </div>
+                </td>
+                <td class="tg-0lax">
+                    <div>
+                        <label for='mark'></label>
+                        <input type='text' id='weightage3' name='weightage3'>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+    </form>
+</body>
+</html>
