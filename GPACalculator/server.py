@@ -1,6 +1,7 @@
 import flask
 from flask import render_template, url_for, request
 from datetime import datetime
+import numpy as np
 
 app = flask.Flask(__name__)
 
@@ -12,23 +13,23 @@ def root():
     return render_template("index.html", t=now.strftime("%m/%d/%Y, %H:%M:%S"))
 
 
-@app.route("/calculate")
+@app.route("/calculate", methods=["POST"])
 def calculate():
     # output = "Thanks for submitting this: " + str(request.args)
     mark = [
-        float(request.args["mark1"]),
-        float(request.args["mark2"]),
-        float(request.args["mark3"]),
+        float(request.form["mark1"]),
+        float(request.form["mark2"]),
+        float(request.form["mark3"]),
     ]
     weight = [
-        float(request.args["weightage1"]) / 100,
-        float(request.args["weightage2"]) / 100,
-        float(request.args["weightage3"]) / 100,
+        float(request.form["weightage1"]),
+        float(request.form["weightage2"]),
+        float(request.form["weightage3"]),
     ]
     sum = 0
     for i in range(len(mark)):
         sum = sum + mark[i] * weight[i]
-    return render_template("calc.html", mark=mark, weight=weight, val=sum)
+    return render_template("calc2.html", mark=mark, weight=weight, val=sum)
 
 
 @app.errorhandler(404)
