@@ -51,7 +51,10 @@ def add(title, body):
 @app.route('/delete/<number>')
 def delete(number):
     db = get_db()
-    db.execute('DELETE FROM post WHERE id=?', number)
+    # print(number)
+    # print(type(number))
+    # print(len(number))
+    db.execute('DELETE FROM post WHERE id=?', int(number))
     db.commit()
     db.close()
     return redirect(url_for('index'))
