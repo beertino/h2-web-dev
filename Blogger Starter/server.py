@@ -2,6 +2,8 @@ import flask
 from flask import render_template, request, flash, redirect, url_for
 import os
 import sqlite3
+from werkzeug.utils import secure_filename
+
 app = flask.Flask(__name__)
 
 
@@ -63,12 +65,29 @@ def delete(number):
 @app.route('/posts/<id>')
 def get_post(id):
     db = get_db()
-    print(int(id))
     cursor = db.execute('SELECT * from post WHERE id=(?)', (int(id),))
     post = cursor.fetchone()
-    print(post['title'])
     db.close()
     return render_template('showpost.html', post=post)
+
+
+@app.route('/create', methods=['POST', 'GET'])
+def create():
+
+    if request.method == 'GET':
+        return render_template('createpost.html')
+    title = request.form['title']
+    body = request.form['body']
+    if request.files['file'] or request.files['img']:
+        file_filename = secure_filename(request.files['file'].filename)
+        img_filename = secure_filename(request.files['img'].filename)
+        request.files['file'].save(file_filename)
+        request.files['img'].save(img_filename)
+
+    db = get_db()
+    db.execute(
+        'INSERT INTO post(title, body, image,file ) VALUES (?,?,?,?)', (title, body, img_filename, file_filename))
+    return redirect(url_for('index'))
 
 
 @app.errorhandler(404)
