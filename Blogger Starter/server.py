@@ -60,6 +60,17 @@ def delete(number):
     return redirect(url_for('index'))
 
 
+@app.route('/posts/<id>')
+def get_post(id):
+    db = get_db()
+    print(int(id))
+    cursor = db.execute('SELECT * from post WHERE id=(?)', (int(id),))
+    post = cursor.fetchone()
+    print(post['title'])
+    db.close()
+    return render_template('showpost.html', post=post)
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
